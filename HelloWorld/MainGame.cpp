@@ -1,6 +1,8 @@
 #define PLAY_IMPLEMENTATION
 #define PLAY_USING_GAMEOBJECT_MANAGER
 #include "Play.h"
+#include "Rigidbody.h"
+
 
 int DISPLAY_WIDTH = 640;
 int DISPLAY_HEIGHT = 360;
@@ -18,6 +20,8 @@ bool MainGameUpdate( float elapsedTime )
 	Play::ClearDrawingBuffer( Play::cBlack );
 	Play::DrawDebugText( { DISPLAY_WIDTH / 2, DISPLAY_HEIGHT / 2 }, "Asteroids" );
 	Play::PresentDrawingBuffer();
+	timeStep++;
+
 	return Play::KeyDown( VK_ESCAPE );
 }
 
