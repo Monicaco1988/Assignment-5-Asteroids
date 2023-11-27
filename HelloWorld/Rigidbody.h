@@ -7,13 +7,13 @@
 
 class RigidBody
 {
-private:
+public:
 
 	//poisition
 	int x = 10;
 	int y = 10;
 
-public:
+//public:
 	// position
 	Point2D position;
 	
@@ -42,7 +42,11 @@ public:
 	{
 	}
 
+	// pure virtual function for drawing, use drawspriterotaded
 
+	virtual void DrawObject()
+	{
+	};
 };
 
 void SpeedObject(RigidBody rigidBody, int speed);

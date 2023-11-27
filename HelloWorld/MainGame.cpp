@@ -22,20 +22,19 @@ bool MainGameUpdate( float elapsedTime )
 	Play::ClearDrawingBuffer( Play::cBlack );
 	
 	//Play::DrawDebugText( { DISPLAY_WIDTH / 2, DISPLAY_HEIGHT / 2 }, "" );
-	
-	RigidBody rigidBody = RigidBody();
 
-	DrawShip(rigidBody);
+	Ship ship = Ship();
+
 	DrawAsteroid();
+
+	ship.DrawObject();
 	
-	ShipMovement(rigidBody);
+	ShipMovement();
 
 	Play::PresentDrawingBuffer();
-	//timeStepOne++;
 
 	Play::frameCount++;
 
-	
 
 	return Play::KeyDown( VK_ESCAPE );
 }

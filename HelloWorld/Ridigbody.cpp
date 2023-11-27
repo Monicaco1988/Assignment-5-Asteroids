@@ -7,7 +7,7 @@
 
 // Velocity
 
-void SpeedObject(RigidBody rigidBody, int speed)
+void SpeedObject(RigidBody &rigidBody, int speed)
 {
 
 	rigidBody.velocity.x = speed * sin(rigidBody.rotation); //* timeStep;
@@ -19,15 +19,10 @@ void Collision()
 {
 };
 
-void PhysicsGameUpdate(RigidBody rigidBody, int speed)
+void PhysicsGameUpdate(RigidBody &rigidBody, int speed)
 {
 	rigidBody.velocity += rigidBody.acceleration;
 	rigidBody.position += rigidBody.velocity;
 	rigidBody.rotation += speed;
 };
 
-// pure virtual function for drawing, use drawspriterotaded
-
-void Draw()
-{
-};
