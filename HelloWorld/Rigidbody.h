@@ -2,7 +2,7 @@
 #include "Play.h"
 
 //frameCounter in main Globally
-int timeStep;
+//int timeStepOne;
 
 
 class RigidBody

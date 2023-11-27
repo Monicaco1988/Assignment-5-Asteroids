@@ -3,3 +3,4 @@ class Asteroid
 {
 };
 
+void DrawAsteroid();

@@ -2,6 +2,8 @@
 #define PLAY_USING_GAMEOBJECT_MANAGER
 #include "Play.h"
 #include "Rigidbody.h"
+#include "Asteroid.h"
+#include "Ship.h"
 
 
 int DISPLAY_WIDTH = 640;
@@ -18,9 +20,22 @@ void MainGameEntry( PLAY_IGNORE_COMMAND_LINE )
 bool MainGameUpdate( float elapsedTime )
 {
 	Play::ClearDrawingBuffer( Play::cBlack );
-	Play::DrawDebugText( { DISPLAY_WIDTH / 2, DISPLAY_HEIGHT / 2 }, "Asteroids" );
+	
+	//Play::DrawDebugText( { DISPLAY_WIDTH / 2, DISPLAY_HEIGHT / 2 }, "" );
+	
+	RigidBody rigidBody = RigidBody();
+
+	DrawShip(rigidBody);
+	DrawAsteroid();
+	
+	ShipMovement(rigidBody);
+
 	Play::PresentDrawingBuffer();
-	timeStep++;
+	//timeStepOne++;
+
+	Play::frameCount++;
+
+	
 
 	return Play::KeyDown( VK_ESCAPE );
 }

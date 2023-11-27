@@ -1,4 +1,5 @@
 #include "Rigidbody.h"
+#include "Play.h"
 
 // Save the current position in case we need to go back
 //obj.oldPos = obj.pos;
@@ -9,8 +10,8 @@
 void SpeedObject(RigidBody rigidBody, int speed)
 {
 
-	rigidBody.velocity.x = speed * sin(rigidBody.rotation) * timeStep;
-	rigidBody.velocity.y = speed * cos(rigidBody.rotation) * timeStep;
+	rigidBody.velocity.x = speed * sin(rigidBody.rotation); //* timeStep;
+	rigidBody.velocity.y = speed * cos(rigidBody.rotation); //* timeStep;
 };
 // virtual methods collisions and physics
 
