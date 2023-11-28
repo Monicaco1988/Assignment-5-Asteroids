@@ -10,6 +10,9 @@ int DISPLAY_WIDTH = 640;
 int DISPLAY_HEIGHT = 360;
 int DISPLAY_SCALE = 2;
 
+
+Ship ship = Ship();
+
 // The entry point for a PlayBuffer program
 void MainGameEntry( PLAY_IGNORE_COMMAND_LINE )
 {
@@ -23,13 +26,21 @@ bool MainGameUpdate( float elapsedTime )
 	
 	//Play::DrawDebugText( { DISPLAY_WIDTH / 2, DISPLAY_HEIGHT / 2 }, "" );
 
-	Ship ship = Ship();
+	//Ship ship = Ship();
 
 	DrawAsteroid();
 
 	ship.DrawObject();
+
+	ship.ShipMovement();
+
+	Play::CentreSpriteOrigin("Ship"); // Nice
 	
-	ShipMovement();
+
+	if (Play::frameCount >= 10)
+	{
+		Play::frameCount = 0;
+	};
 
 	Play::PresentDrawingBuffer();
 

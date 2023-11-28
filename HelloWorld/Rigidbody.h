@@ -32,12 +32,14 @@ public:
 	
 	RigidBody()	 // constructor for rigidbody.acceleration
 	{
+		
 		position = { x, y };
 		velocity = { 0.0f, 0.0f };
 		acceleration = { 0.0f, 0.0f };
 		rotation = { 0.0f }; // I radianer
 		radius = {0};
 	}
+
 	~RigidBody() 
 	{
 	}
@@ -49,7 +51,6 @@ public:
 	};
 };
 
-void SpeedObject(RigidBody rigidBody, int speed);
 void SpeedObject(RigidBody rigidBody, int speed);
 void Collision();
 void PhysicsGameUpdate(RigidBody rigidBody);
