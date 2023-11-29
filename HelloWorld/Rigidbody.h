@@ -7,17 +7,18 @@
 
 class RigidBody
 {
+//private:
 public:
-
 	//poisition
-	int x = 10;
-	int y = 10;
+	int x = 100;
+	int y = 100;
+
+	int speed = 1;
 
 //public:
 	// position
 	Point2D position;
-	
-	// velocity
+
 	Vector2D velocity;
 
 	// acceleration
@@ -32,7 +33,6 @@ public:
 	
 	RigidBody()	 // constructor for rigidbody.acceleration
 	{
-		
 		position = { x, y };
 		velocity = { 0.0f, 0.0f };
 		acceleration = { 0.0f, 0.0f };
@@ -40,17 +40,19 @@ public:
 		radius = {0};
 	}
 
-	~RigidBody() 
+	~RigidBody()
 	{
-	}
-
-	// pure virtual function for drawing, use drawspriterotaded
-
-	virtual void DrawObject()
-	{
+		//delete [] = rigidBody;
 	};
+
+	virtual void DrawObject() = 0; //Pure virtual function
+
+	virtual void SpeedObject();
+
+	virtual void Collision();
+
+	virtual void PhysicsGameUpdate();
+
 };
 
-void SpeedObject(RigidBody rigidBody, int speed);
-void Collision();
-void PhysicsGameUpdate(RigidBody rigidBody);
+
