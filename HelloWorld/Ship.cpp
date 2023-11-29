@@ -45,6 +45,8 @@ void Ship::PhysicsGameUpdate()
 	velocity += acceleration;
 	position += velocity;
 
+	position += {0, 0};
+
 	acceleration.x = 0;
 	acceleration.y = 0;
 
@@ -55,6 +57,6 @@ void Ship::PhysicsGameUpdate()
 
 void Ship::DrawObject()
 {
-	Play::DrawSpriteRotated("Ship", { position }, 1, rotation, 0.5f);
+	Play::DrawSpriteRotated("Ship", { position }, 1, rotation, 0.5f, 1.0f);
 };
 

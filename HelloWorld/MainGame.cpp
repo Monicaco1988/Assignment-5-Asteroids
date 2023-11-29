@@ -11,20 +11,24 @@ int DISPLAY_SCALE = 2;
 
 RigidBody** rigidbody; // look this up online
 
+RigidBody **rigidBody = nullptr;
+
 // The entry point for a PlayBuffer program
 void MainGameEntry( PLAY_IGNORE_COMMAND_LINE )
 {
 	Play::CreateManager( DISPLAY_WIDTH, DISPLAY_HEIGHT, DISPLAY_SCALE );
 
-	rigidbody = new RigidBody * [1000]; // allocating space in RigidBody in memory
+	rigidbody = new RigidBody * [10]; // allocating space in RigidBody in memory Only delete what you allocate with new.
 	rigidbody[0] = new Ship(); // int the allocated dynamic memory the first space is made for the array, jag kommer använda detta som min instantierade
-	// "ship" då jag kalla alla mina object för rigidBodies!
+	// "ship" då jag kalla alla mina object för rigidBodies! Only delete what you allocate with new.
 	
-	for (int i = 1; i < 2; i++)
+	//rigidbody[1] = new Asteroid();
+
+	for (int i = 1; i <= 6; i++)
 	{
 		rigidbody[i] = new Asteroid();
 	}
-
+	//delete rigidBody; Ask about this ----------------------------------------
 }
 
 // Called by PlayBuffer every frame (60 times a second!)
@@ -32,11 +36,19 @@ bool MainGameUpdate( float elapsedTime )
 {
 	Play::ClearDrawingBuffer( Play::cBlack );
 
-	rigidbody[1]->DrawObject();
+	for (int i = 1; i <= 6; i++)
+	{
+		rigidbody[i]->DrawObject();
 
-	rigidbody[1]->SpeedObject();
+		rigidbody[i]->SpeedObject();
 
-	rigidbody[1]->PhysicsGameUpdate();
+		rigidbody[i]->PhysicsGameUpdate();
+
+	};
+	
+	Play::CentreSpriteOrigin("Asteroid");
+	
+	//Ship [0]
 
 	rigidbody[0]->PhysicsGameUpdate();
 	
@@ -51,15 +63,16 @@ bool MainGameUpdate( float elapsedTime )
 
 	Play::PresentDrawingBuffer();
 
-	Play::frameCount++;
+	//Play::frameCount++;
 
-
+	
 	return Play::KeyDown( VK_ESCAPE );
 }
 
 // Gets called once when the player quits the game 
 int MainGameExit( void )
 {
+	
 	Play::DestroyManager();
 	return PLAY_OK;
 }

@@ -6,12 +6,20 @@ class Asteroid : public RigidBody
 {
 private:
 
-	Point2D position = {100,100};
+	Point2D position = {200,200};
 
 public:
 	Asteroid() { position; };
 
 	void DrawObject();
+
+	void SpeedObject();
+
+	//void Collision();
+
+	void AsteroidBoundries();
+
+	void PhysicsGameUpdate();
 
 };
 

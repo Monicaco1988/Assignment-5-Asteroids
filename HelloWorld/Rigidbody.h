@@ -42,7 +42,7 @@ public:
 
 	~RigidBody()
 	{
-		//delete [] = rigidBody;
+		//delete rigidBody;
 	};
 
 	virtual void DrawObject() = 0; //Pure virtual function
