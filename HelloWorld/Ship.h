@@ -20,7 +20,7 @@ public:
 
 	void ShipBoundries();
 
-	bool Collisions(Ship& ship)
+	bool Collisions(Ship& ship) // this is not implemented and working yet
 	{
 		bool res = false;
 

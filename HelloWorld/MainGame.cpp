@@ -20,10 +20,10 @@ void MainGameEntry( PLAY_IGNORE_COMMAND_LINE )
 	rigidbody[0] = new Ship(); // int the allocated dynamic memory the first space is made for the array, jag kommer använda detta som min instantierade
 	// "ship" då jag kalla alla mina object för rigidBodies!
 	
-	//for (int i = 1; i < /*number of rigid bodies (asteroid + ship)*/; i++)
-	//{
-	//	rigidbody[i] = new Asteroid();
-	//}
+	for (int i = 1; i < 2; i++)
+	{
+		rigidbody[i] = new Asteroid();
+	}
 
 }
 
@@ -32,7 +32,11 @@ bool MainGameUpdate( float elapsedTime )
 {
 	Play::ClearDrawingBuffer( Play::cBlack );
 
-	DrawAsteroid();
+	rigidbody[1]->DrawObject();
+
+	rigidbody[1]->SpeedObject();
+
+	rigidbody[1]->PhysicsGameUpdate();
 
 	rigidbody[0]->PhysicsGameUpdate();
 	
