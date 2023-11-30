@@ -9,18 +9,20 @@ int DISPLAY_WIDTH = 640;
 int DISPLAY_HEIGHT = 360;
 int DISPLAY_SCALE = 2;
 
-int asteroidAmount = 5;
+int asteroidAmount = 3;
+
+int ShipAmount = 1;
 
 RigidBody** rigidbody; // look this up online
-
-//RigidBody *rigidbody = nullptr;
 
 // The entry point for a PlayBuffer program
 void MainGameEntry( PLAY_IGNORE_COMMAND_LINE )
 {
 	Play::CreateManager( DISPLAY_WIDTH, DISPLAY_HEIGHT, DISPLAY_SCALE );
 
-	rigidbody = new RigidBody * [asteroidAmount +2]; // allocating space in RigidBody in memory Only delete what you allocate with new.
+	rigidbody = nullptr;
+
+	rigidbody = new RigidBody * [asteroidAmount+ShipAmount]; // allocating space in RigidBody in memory Only delete what you allocate with new.
 	rigidbody[0] = new Ship(); // int the allocated dynamic memory the first space is made for the array, jag kommer använda detta som min instantierade
 	// "ship" då jag kalla alla mina object för rigidBodies! Only delete what you allocate with new.
 	
@@ -30,6 +32,7 @@ void MainGameEntry( PLAY_IGNORE_COMMAND_LINE )
 	{
 		rigidbody[i] = new Asteroid();
 	}
+	
 	//delete rigidBody; Ask about this ----------------------------------------
 }
 
@@ -37,6 +40,18 @@ void MainGameEntry( PLAY_IGNORE_COMMAND_LINE )
 bool MainGameUpdate( float elapsedTime )
 {
 	Play::ClearDrawingBuffer( Play::cBlack );
+
+	//Ship [0]
+
+	rigidbody[0]->PhysicsGameUpdate();
+
+	rigidbody[0]->DrawObject(); // using the arrow points to the function of the specific place in memory, kolla upp hur -> funkar också, när jag kan och inte kan använda dem
+
+
+
+	Play::CentreSpriteOrigin("Ship"); // Nice
+
+	//Asteroids
 
 	for (int i = 1; i <= asteroidAmount; i++)
 	{
@@ -46,20 +61,17 @@ bool MainGameUpdate( float elapsedTime )
 
 		rigidbody[i]->PhysicsGameUpdate();
 
+		rigidbody[0]->Collision(rigidbody[i]);
+
 	};
 
+	
 	Play::CentreSpriteOrigin("Asteroid");
 	
-	//Ship [0]
 
-	rigidbody[0]->PhysicsGameUpdate();
-	
-	rigidbody[0]->DrawObject(); // using the arrow points to the function of the specific place in memory, kolla upp hur -> funkar också, när jag kan och inte kan använda dem
-
-	Play::CentreSpriteOrigin("Ship"); // Nice
 
 	Play::PresentDrawingBuffer();
-	
+
 	return Play::KeyDown( VK_ESCAPE );
 }
 

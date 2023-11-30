@@ -49,7 +49,7 @@ public:
 
 	virtual void SpeedObject();
 
-	virtual void Collision(RigidBody* rigidbody);
+	virtual void Collision(RigidBody *rigidbody);
 
 	virtual void PhysicsGameUpdate();
 

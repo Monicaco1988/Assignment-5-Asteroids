@@ -1,6 +1,7 @@
 #include "Ship.h"
 #include "Play.h"
 #include "RigidBody.h"
+#include "Asteroid.h"
 
 void Ship::ShipBoundries()
 {
@@ -63,17 +64,22 @@ void Ship::DrawObject()
 void Ship::Collision(RigidBody* rigidbody)
 {
 
-	int xDiff = rigidbody[1].position.x - rigidbody[0].position.x;
-
-	int yDiff = rigidbody[1].position.y - rigidbody[0].position.y;
-
-	int radii = radius + radius;
-
-	// Game progammers don't do square root! 
-
-	if ((xDiff * xDiff) + (yDiff * yDiff) < 1000)
+	for (int i = 1; i <= 4; i++)// make the asteroid amount global
 	{
-		position.x = 0;
-	};
+		int xdiff = rigidbody[i].position.x - position.x; // looping over all rigidbody objects and comparing to the "ship rigidbody"
 
+		int ydiff = rigidbody[i].position.y - position.y;
+
+		int radii = radius + radius;
+
+		// game progammers don't do square root!
+
+		if ((xdiff * xdiff) + (ydiff * ydiff) < radius * radius)
+		{
+			position.x = 640/2;
+			position.y = 360 / 2;
+			velocity = { 0,0 };
+			Sleep(1000);
+		};
+	};
 };
