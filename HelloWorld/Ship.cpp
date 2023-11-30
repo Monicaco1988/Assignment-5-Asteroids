@@ -57,6 +57,23 @@ void Ship::PhysicsGameUpdate()
 
 void Ship::DrawObject()
 {
-	Play::DrawSpriteRotated("Ship", { position }, 1, rotation, 0.5f, 1.0f);
+	Play::DrawSpriteRotated("Ship", { position }, radius, rotation, 0.5f, 1.0f); // what is int frame? maybe to frame it in??
 };
 
+void Ship::Collision(RigidBody* rigidbody)
+{
+
+	int xDiff = rigidbody[1].position.x - rigidbody[0].position.x;
+
+	int yDiff = rigidbody[1].position.y - rigidbody[0].position.y;
+
+	int radii = radius + radius;
+
+	// Game progammers don't do square root! 
+
+	if ((xDiff * xDiff) + (yDiff * yDiff) < 1000)
+	{
+		position.x = 0;
+	};
+
+};

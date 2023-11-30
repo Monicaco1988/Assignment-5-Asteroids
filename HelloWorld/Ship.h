@@ -15,6 +15,8 @@ public:
 
 	void DrawObject();
 
+	void Collision(RigidBody* rigidbody);
+
 	void PhysicsGameUpdate();
 
 	void ShipBoundries();

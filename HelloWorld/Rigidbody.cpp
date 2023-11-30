@@ -7,19 +7,22 @@ void RigidBody::SpeedObject()
 {
 	velocity.x = speed * sin(rotation); //* timeStep;
 	velocity.y = speed * cos(rotation); //* Play::timeStep;
-};
+}
 
-bool RigidBody::Collision(RigidBody *rigidbody)
+void RigidBody::Collision(RigidBody* rigidbody)
 {
-	//if ()
-	int xDiff = this->position.x - rigidbody[1].position.x;
+	int xdiff = rigidbody[0].position.x - rigidbody[1].position.x;
 
-	int yDiff = this->position.y - rigidbody[1].position.y;
+	int ydiff = rigidbody[0].position.x - rigidbody[1].position.y;
 
 	int radii = radius + radius;
 
-	// Game progammers don't do square root!
-	return((xDiff * xDiff) + (yDiff * yDiff) < radii * radii);
+	// game progammers don't do square root!
+
+	if ((xdiff * xdiff) + (ydiff * ydiff) < radius * radius)
+	{
+		rigidbody[0].position.x = 300;
+	};
 };
 
 void RigidBody::PhysicsGameUpdate()

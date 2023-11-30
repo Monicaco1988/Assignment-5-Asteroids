@@ -9,22 +9,24 @@ int DISPLAY_WIDTH = 640;
 int DISPLAY_HEIGHT = 360;
 int DISPLAY_SCALE = 2;
 
+int asteroidAmount = 5;
+
 RigidBody** rigidbody; // look this up online
 
-RigidBody **rigidbody = nullptr;
+//RigidBody *rigidbody = nullptr;
 
 // The entry point for a PlayBuffer program
 void MainGameEntry( PLAY_IGNORE_COMMAND_LINE )
 {
 	Play::CreateManager( DISPLAY_WIDTH, DISPLAY_HEIGHT, DISPLAY_SCALE );
 
-	rigidbody = new RigidBody * [10]; // allocating space in RigidBody in memory Only delete what you allocate with new.
+	rigidbody = new RigidBody * [asteroidAmount +2]; // allocating space in RigidBody in memory Only delete what you allocate with new.
 	rigidbody[0] = new Ship(); // int the allocated dynamic memory the first space is made for the array, jag kommer använda detta som min instantierade
 	// "ship" då jag kalla alla mina object för rigidBodies! Only delete what you allocate with new.
 	
 	//rigidbody[1] = new Asteroid();
 
-	for (int i = 1; i <= 3; i++)
+	for (int i = 1; i <= asteroidAmount; i++)
 	{
 		rigidbody[i] = new Asteroid();
 	}
@@ -36,7 +38,7 @@ bool MainGameUpdate( float elapsedTime )
 {
 	Play::ClearDrawingBuffer( Play::cBlack );
 
-	for (int i = 1; i <= 3; i++)
+	for (int i = 1; i <= asteroidAmount; i++)
 	{
 		rigidbody[i]->DrawObject();
 
@@ -45,7 +47,7 @@ bool MainGameUpdate( float elapsedTime )
 		rigidbody[i]->PhysicsGameUpdate();
 
 	};
-	
+
 	Play::CentreSpriteOrigin("Asteroid");
 	
 	//Ship [0]
@@ -56,12 +58,7 @@ bool MainGameUpdate( float elapsedTime )
 
 	Play::CentreSpriteOrigin("Ship"); // Nice
 
-	//rididbody[0]->Collision(RigidBody * rigidbody);
-
 	Play::PresentDrawingBuffer();
-
-
-
 	
 	return Play::KeyDown( VK_ESCAPE );
 }
@@ -73,3 +70,6 @@ int MainGameExit( void )
 	Play::DestroyManager();
 	return PLAY_OK;
 }
+
+
+
