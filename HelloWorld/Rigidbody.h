@@ -37,7 +37,7 @@ public:
 		velocity = { 0.0f, 0.0f };
 		acceleration = { 0.0f, 0.0f };
 		rotation = { 0.0f }; // I radianer
-		radius = {0};
+		radius = {10};
 	}
 
 	~RigidBody()
@@ -49,7 +49,7 @@ public:
 
 	virtual void SpeedObject();
 
-	virtual void Collision();
+	virtual bool Collision(RigidBody* rigidbody);
 
 	virtual void PhysicsGameUpdate();
 

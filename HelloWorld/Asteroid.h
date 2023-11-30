@@ -6,7 +6,7 @@ class Asteroid : public RigidBody
 {
 private:
 
-	Point2D position = {200,200};
+	Point2D position = { Play::RandomRollRange(-200, 200),Play::RandomRollRange(-200, 200) };
 
 public:
 	Asteroid() { position; };
@@ -15,11 +15,11 @@ public:
 
 	void SpeedObject();
 
-	//void Collision();
-
-	void AsteroidBoundries();
+	void AsteroidBoundries(); // could have placed this under game physics, oh well
 
 	void PhysicsGameUpdate();
+
+	int counter = 0;
 
 };
 

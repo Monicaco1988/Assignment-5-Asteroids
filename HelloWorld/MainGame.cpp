@@ -11,7 +11,7 @@ int DISPLAY_SCALE = 2;
 
 RigidBody** rigidbody; // look this up online
 
-RigidBody **rigidBody = nullptr;
+RigidBody **rigidbody = nullptr;
 
 // The entry point for a PlayBuffer program
 void MainGameEntry( PLAY_IGNORE_COMMAND_LINE )
@@ -24,7 +24,7 @@ void MainGameEntry( PLAY_IGNORE_COMMAND_LINE )
 	
 	//rigidbody[1] = new Asteroid();
 
-	for (int i = 1; i <= 6; i++)
+	for (int i = 1; i <= 3; i++)
 	{
 		rigidbody[i] = new Asteroid();
 	}
@@ -36,7 +36,7 @@ bool MainGameUpdate( float elapsedTime )
 {
 	Play::ClearDrawingBuffer( Play::cBlack );
 
-	for (int i = 1; i <= 6; i++)
+	for (int i = 1; i <= 3; i++)
 	{
 		rigidbody[i]->DrawObject();
 
@@ -56,14 +56,11 @@ bool MainGameUpdate( float elapsedTime )
 
 	Play::CentreSpriteOrigin("Ship"); // Nice
 
-	//if (Play::frameCount >= 10)
-	//{
-	//	Play::frameCount = 0;
-	//};
+	//rididbody[0]->Collision(RigidBody * rigidbody);
 
 	Play::PresentDrawingBuffer();
 
-	//Play::frameCount++;
+
 
 	
 	return Play::KeyDown( VK_ESCAPE );
