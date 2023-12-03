@@ -11,24 +11,19 @@ void RigidBody::SpeedObject()
 
 void RigidBody::Collision(RigidBody* rigidbody)
 {
-	//for (int i = 1; i <= 5; i++) // make the asteroid amount global
-	//{
-	//	int xdiff = rigidbody[i].position.x - position.x; // looping over all rigidbody objects and comparing to the "ship rigidbody"
 
-	//	int ydiff = rigidbody[i].position.y - position.y;
+		int xdiff = position.x - rigidbody[1].position.x; // looping over all rigidbody objects and comparing to the "ship rigidbody"
 
-	//	int radii = radius + radius;
+		int ydiff = position.y - rigidbody[1].position.y;
 
-	//	// game progammers don't do square root!
+		int radii = radius + radius;
 
-	//	if ((xdiff * xdiff) + (ydiff * ydiff) < radius * radius)
-	//	{
-	//		//Sleep(1000);
-	//		position.x = 640 / 2;
-	//		position.y = 360 / 2;
+		// game progammers don't do square root!
 
-	//	};
-	//};
+		if ((xdiff * xdiff) + (ydiff * ydiff) < radius * radius)
+		{
+			Sleep(1000);
+		};
 };
 
 void RigidBody::PhysicsGameUpdate()

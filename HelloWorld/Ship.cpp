@@ -63,12 +63,9 @@ void Ship::DrawObject()
 
 void Ship::Collision(RigidBody* rigidbody)
 {
+		int xdiff = position.x - rigidbody[1].position.x; // looping over all rigidbody objects and comparing to the "ship rigidbody"
 
-	for (int i = 1; i <= 4; i++)// make the asteroid amount global
-	{
-		int xdiff = rigidbody[i].position.x - position.x; // looping over all rigidbody objects and comparing to the "ship rigidbody"
-
-		int ydiff = rigidbody[i].position.y - position.y;
+		int ydiff = position.y - rigidbody[1].position.y;
 
 		int radii = radius + radius;
 
@@ -76,10 +73,11 @@ void Ship::Collision(RigidBody* rigidbody)
 
 		if ((xdiff * xdiff) + (ydiff * ydiff) < radius * radius)
 		{
-			position.x = 640/2;
-			position.y = 360 / 2;
+			position.x = 320;
+			position.y = 190;
 			velocity = { 0,0 };
-			Sleep(1000);
+			rotation = { 0 };
+			//Sleep(1000);
 		};
-	};
+
 };

@@ -6,8 +6,6 @@ class Asteroid : public RigidBody
 {
 private:
 
-	
-
 	Vector2D velocity = { float (Play::RandomRollRange(-2, 2)),float (Play::RandomRollRange(-2, 2)) };
 
 	float rotation = { float(Play::RandomRollRange(-1, 1)) };
@@ -27,6 +25,8 @@ public:
 	void SpeedObject();
 
 	void AsteroidBoundries(); // could have placed this under game physics, oh well
+
+	void Collision(RigidBody* rigidbody);
 
 	void PhysicsGameUpdate();
 

@@ -10,8 +10,10 @@ private:
 
 	Point2D position = { 640 / 2,360 / 2 };
 
+	int radius = 10;
+
 public:
-	Ship() { position; }; // Initieringslista för masterclassens initcierare // hur ändrar jag x och y startpositioner? eller andra positioner för den delen
+	Ship() { position, radius; }; // Initieringslista för masterclassens initcierare // hur ändrar jag x och y startpositioner? eller andra positioner för den delen
 
 	void DrawObject();
 
@@ -21,7 +23,4 @@ public:
 
 	void ShipBoundries();
 
-
 };
-
-//void ShipMovement();
