@@ -65,6 +65,12 @@ bool MainGameUpdate( float elapsedTime )
 // Gets called once when the player quits the game 
 int MainGameExit( void )
 {
+
+	for(int i=0; i< asteroidAmount+ShipAmount; i++)
+	delete rigidbody[i];
+
+	delete rigidbody;
+
 	Play::DestroyManager();
 	return PLAY_OK;
 }
