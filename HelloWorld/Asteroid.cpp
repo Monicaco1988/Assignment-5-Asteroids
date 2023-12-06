@@ -5,7 +5,7 @@ void Asteroid::DrawObject()
 {
 	Play::DrawSpriteRotated("Asteroid", { position }, radius, rotation*0.01, scale*0.1, 1.0f); // randomize scale and rotation too
 }
-void Asteroid::PhysicsGameUpdate()
+void Asteroid::PhysicsGameUpdate(float elapsedTime)
 {
 	position += velocity;
 	rotation += speed;

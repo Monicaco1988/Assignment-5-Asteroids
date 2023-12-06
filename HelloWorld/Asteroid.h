@@ -28,7 +28,7 @@ public:
 
 	void Collision(RigidBody* rigidbody);
 
-	void PhysicsGameUpdate();
+	void PhysicsGameUpdate(float elapsedTime);
 
 };
 

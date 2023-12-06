@@ -25,13 +25,13 @@ void Ship::ShipBoundries()
 	};
 };
 
-void Ship::PhysicsGameUpdate()
+void Ship::PhysicsGameUpdate(float elapsedTime)
 {
 	if (Play::KeyDown(VK_SPACE))
 	{
-		acceleration.x += shipThrust * sin(rotation);
-		acceleration.y += -shipThrust * cos(rotation);
-	};
+		acceleration.x += shipThrust * sin(rotation) * elapsedTime;
+		acceleration.y += -shipThrust * cos(rotation) * elapsedTime;
+	};                                                                                   
 	if (Play::KeyDown(VK_LEFT))
 	{
 		rotation -= 0.1;

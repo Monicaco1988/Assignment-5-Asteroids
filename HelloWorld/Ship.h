@@ -6,7 +6,7 @@
 class Ship : public RigidBody // OBS det ska vara colon : inte semicolon ; !!!!
 {
 private:
-	double shipThrust = 0.1;
+	double shipThrust = 5;
 
 	Point2D position = { 640 / 2,360 / 2 };
 
@@ -19,7 +19,7 @@ public:
 
 	void Collision(RigidBody* rigidbody);
 
-	void PhysicsGameUpdate();
+	void PhysicsGameUpdate(float elapsedTime);
 
 	void ShipBoundries();
 

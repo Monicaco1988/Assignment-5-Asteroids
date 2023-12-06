@@ -48,7 +48,7 @@ public:
 	virtual void DrawObject() = 0; //Pure virtual function
 	virtual void SpeedObject();
 	virtual void Collision(RigidBody *rigidbody);
-	virtual void PhysicsGameUpdate();
+	virtual void PhysicsGameUpdate(float elapsedTime);
 
 };
 

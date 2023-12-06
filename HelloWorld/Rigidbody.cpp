@@ -6,7 +6,7 @@
 void RigidBody::SpeedObject()
 {
 	velocity.x = speed * sin(rotation); //* timeStep;
-	velocity.y = speed * cos(rotation); //* Play::timeStep;
+	velocity.y = speed * cos(rotation); //* timeStep;
 }
 
 void RigidBody::Collision(RigidBody* rigidbody)
@@ -26,7 +26,7 @@ void RigidBody::Collision(RigidBody* rigidbody)
 		};
 };
 
-void RigidBody::PhysicsGameUpdate()
+void RigidBody::PhysicsGameUpdate(float elapsedTime)
 {
 	velocity += acceleration;
 	position += velocity;

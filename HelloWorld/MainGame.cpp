@@ -33,13 +33,13 @@ void MainGameEntry( PLAY_IGNORE_COMMAND_LINE )
 }
 
 // Called by PlayBuffer every frame (60 times a second!)
-bool MainGameUpdate( float elapsedTime )
+bool MainGameUpdate(float elapsedTime )
 {
 	Play::ClearDrawingBuffer( Play::cBlack );
 
 	//Ship [0]
 
-	rigidbody[0]->PhysicsGameUpdate();
+	rigidbody[0]->PhysicsGameUpdate(elapsedTime);
 
 	rigidbody[0]->DrawObject(); // using the arrow points to the function of the specific place in memory
 
@@ -51,10 +51,12 @@ bool MainGameUpdate( float elapsedTime )
 	{
 		rigidbody[i]->DrawObject();
 		rigidbody[i]->SpeedObject();
-		rigidbody[i]->PhysicsGameUpdate();
+		rigidbody[i]->PhysicsGameUpdate(elapsedTime);
 		rigidbody[0]->Collision(rigidbody[i]);
 	};
 	
+
+
 	Play::CentreSpriteOrigin("Asteroid");
 	
 	Play::PresentDrawingBuffer();
