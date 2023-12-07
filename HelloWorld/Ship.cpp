@@ -25,6 +25,8 @@ void Ship::ShipBoundries()
 	};
 };
 
+
+
 void Ship::PhysicsGameUpdate(float elapsedTime)
 {
 	if (Play::KeyDown(VK_SPACE))
@@ -61,23 +63,23 @@ void Ship::DrawObject()
 	Play::DrawSpriteRotated("Ship", { position }, radius, rotation, 0.5f, 1.0f); // what is int frame? maybe to frame it in??
 };
 
-void Ship::Collision(RigidBody* rigidbody)
+void Ship::Collision(RigidBody* rigidbody) // not really wordking
 {
-		int xdiff = position.x - rigidbody[1].position.x; // looping over all rigidbody objects and comparing to the "ship rigidbody"
+	// vil kunna kalla this -> positionShip.x för rigidbody[0]
 
-		int ydiff = position.y - rigidbody[1].position.y;
+	int xdiff = this->position.x - rigidbody->position.x; // looping over all rigidbody objects and comparing to the "ship rigidbody"
 
-		int radii = radius + radius;
+	int ydiff = this->position.y - rigidbody->position.y;
 
-		// game progammers don't do square root!
+	int radii = radius + radius;
 
-		if ((xdiff * xdiff) + (ydiff * ydiff) < radius * radius)
-		{
-			position.x = 320;
-			position.y = 190;
-			velocity = { 0,0 };
-			rotation = { 0 };
-			//Sleep(1000);
-		};
+	// game progammers don't do square root!
 
+	if ((xdiff * xdiff) + (ydiff * ydiff) < radius * radius)
+	{
+		rigidbody->position.x = 320;
+		rigidbody->position.y = 190;
+		rigidbody->velocity = { 0,0 };
+		rigidbody->rotation = { 0 };
+	};
 };

@@ -9,7 +9,7 @@ int DISPLAY_WIDTH = 640;
 int DISPLAY_HEIGHT = 360;
 int DISPLAY_SCALE = 2;
 
-int asteroidAmount = 15;
+int asteroidAmount = 5;
 
 const int ShipAmount = 1;
 
@@ -52,7 +52,7 @@ bool MainGameUpdate(float elapsedTime )
 		rigidbody[i]->DrawObject();
 		rigidbody[i]->SpeedObject();
 		rigidbody[i]->PhysicsGameUpdate(elapsedTime);
-		rigidbody[0]->Collision(rigidbody[i]);
+		rigidbody[i]->Collision(rigidbody[0]);
 	};
 	
 
